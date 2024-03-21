@@ -3,11 +3,7 @@ package helpers
 import "time"
 
 func GetGreeting(sender string) string {
-	// Configurar o locale para pt-br
-	// dayjs.locale('pt-br');
-	// Obter a data e hora atual
 	now := time.Now().UTC().Add(-3 * time.Hour)
-	// Verificar o período do dia e retornar a saudação apropriada
 	hour := now.Hour()
 	if hour >= 4 && hour < 12 {
 		return "Bom dia " + sender + ", dormiu bem?"

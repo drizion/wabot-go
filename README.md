@@ -1,12 +1,12 @@
 # Wabot | Bot do WhatsApp em Golang
 
-Este é um bot simples para WhatsApp desenvolvido em Go. Ele utiliza a biblioteca WhatsApp Web para interagir com o WhatsApp.
+Este é um bot simples para WhatsApp desenvolvido em Go. Ele utiliza a biblioteca [tulir/whatsmeow](https://github.com/tulir/whatsmeow) para interagir com o WhatsApp.
 
 ## Funcionalidades
 
 - Criação de figurinhas
-- em desenvolvimento...
-- 
+- `em desenvolvimento...`
+
 ## Instalação
 
 Certifique-se de ter o Go instalado na sua máquina.

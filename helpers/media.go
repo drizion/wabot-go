@@ -91,17 +91,17 @@ func GetAudioMessage(msg *events.Message) (audioMsg *waProto.VideoMessage, err e
 	return audioMsg, nil
 }
 
-func GetStickerMessage(msg *events.Message) (videoMsg *waProto.StickerMessage, err error) {
+func GetStickerMessage(msg *events.Message) (stickerMsg *waProto.StickerMessage, err error) {
 	if msg.Message.StickerMessage != nil {
-		videoMsg = msg.Message.StickerMessage
+		stickerMsg = msg.Message.StickerMessage
 	} else if msg.Message.ExtendedTextMessage != nil &&
 		msg.Message.ExtendedTextMessage.ContextInfo != nil &&
 		msg.Message.ExtendedTextMessage.ContextInfo.QuotedMessage != nil &&
 		msg.Message.ExtendedTextMessage.ContextInfo.QuotedMessage.StickerMessage != nil {
-		videoMsg = msg.Message.ExtendedTextMessage.ContextInfo.QuotedMessage.StickerMessage
+		stickerMsg = msg.Message.ExtendedTextMessage.ContextInfo.QuotedMessage.StickerMessage
 	} else {
 		err = fmt.Errorf("no valid video found")
 		return nil, err
 	}
-	return videoMsg, nil
+	return stickerMsg, nil
 }

@@ -1,7 +1,6 @@
 package command
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/drizion/wabot-go/helpers"
@@ -9,7 +8,6 @@ import (
 )
 
 func Ping(msg *events.Message) {
-	fmt.Println("Command PING executed... sending message")
 	start := time.Now()
 	helpers.SendReact(msg, helpers.PingReaction)
 	duration := time.Since(start)

@@ -11,7 +11,7 @@ import (
 )
 
 func MessageHandler(m *events.Message) {
-	text := GetTextFromMessage(m)
+	text := helpers.GetTextFromMsg(m)
 
 	if m.Info.IsFromMe || text == "" || text[0] != config.Prefix[0] {
 		return
@@ -28,19 +28,4 @@ func MessageHandler(m *events.Message) {
 		return
 	}
 	helpers.Reply(m, "Comando não encontrado!\nUse `"+config.Prefix+"menu` para ver a lista de comandos.")
-}
-
-func GetTextFromMessage(m *events.Message) string {
-	switch {
-	case m.Message.GetConversation() != "":
-		return m.Message.GetConversation()
-	case m.Message.ImageMessage.GetCaption() != "":
-		return m.Message.ImageMessage.GetCaption()
-	case m.Message.VideoMessage.GetCaption() != "":
-		return m.Message.VideoMessage.GetCaption()
-	case m.Message.ExtendedTextMessage.GetText() != "":
-		return m.Message.ExtendedTextMessage.GetText()
-	default:
-		return ""
-	}
 }

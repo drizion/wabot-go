@@ -89,8 +89,6 @@ func Fig(msg *events.Message, args []string) {
 		}
 	}
 
-	fmt.Println("Conversão concluída com sucesso!")
-
 	stickerBytes, err = os.ReadFile(outputPath)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
@@ -126,7 +124,6 @@ func Fig(msg *events.Message, args []string) {
 		return
 	}
 
-	fmt.Println("Sticker uploaded:", uploadedSticker)
 	msgToSend := &waProto.Message{
 		StickerMessage: &waProto.StickerMessage{
 			Url:           proto.String(uploadedSticker.URL),

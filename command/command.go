@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/drizion/wabot-go/config"
+	"go.mau.fi/whatsmeow/types/events"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -33,7 +34,16 @@ func SetupCommands() {
 		MenuTrigger: proto.String("fig"),
 		Triggers:    []string{"fig", "figurinhas", "figurinha", "sticker", "stickers"},
 		Tags:        []string{"figurinhas"},
-		Exec:        Fig,
+		Exec:        func(msg *events.Message) { Fig(msg, nil) },
+		Description: "Converte imagem ou video em figurinha.",
+		Usage:       fmt.Sprintf("Envie uma imagem ou video com a legenda %sfig", config.Prefix),
+	})
+
+	Registry.RegisterCommand(Command{
+		MenuTrigger: proto.String("cfig"),
+		Triggers:    []string{"cfig"},
+		Tags:        []string{"figurinhas", "figurinhas", "figurinha", "sticker", "stickers"},
+		Exec:        func(msg *events.Message) { Fig(msg, []string{"cfig"}) },
 		Description: "Converte imagem ou video em figurinha.",
 		Usage:       fmt.Sprintf("Envie uma imagem ou video com a legenda %sfig", config.Prefix),
 	})

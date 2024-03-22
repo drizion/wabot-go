@@ -13,6 +13,7 @@ const (
 	ErrorReaction   string = "❌"
 	SuccessReaction string = "✅"
 	LoadingReaction string = "⏳"
+	ConfigReaction  string = "⚙️"
 	PingReaction    string = "🏓"
 	LoveReaction    string = "❤️"
 	LikeReaction    string = "👍"

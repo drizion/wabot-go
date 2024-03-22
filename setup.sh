@@ -1,2 +1,2 @@
-sudo apt install libvips-dev
+sudo apt install ffmpeg
 sudo apt install webpmux

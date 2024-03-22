@@ -18,16 +18,17 @@ func SetupCommands() {
 		Exec:              Ping,
 		Description:       "Testa a conexão com o bot",
 		AllowUnregistered: true,
-		Usage:             fmt.Sprintf("Envie %sping para testar se o bot está funcionando", config.Prefix),
+		Usage:             fmt.Sprintf("Envie `%sping` para testar se o bot está funcionando", config.Prefix),
 	})
 
 	Registry.RegisterCommand(Command{
 		MenuTrigger:       proto.String("menu"),
-		Triggers:          []string{"menu", "help", "ajuda", "comandos", "commands"},
+		Triggers:          []string{"menu", "comandos", "commands"},
 		Tags:              []string{"menu", "help", "ajuda", "comandos", "commands"},
 		Exec:              Menu,
 		Description:       `Exibe a lista de comandos disponíveis.`,
 		AllowUnregistered: true,
+		Usage:             fmt.Sprintf("Envie `%smenu` para ver a lista de comandos", config.Prefix),
 	})
 
 	Registry.RegisterCommand(Command{
@@ -36,7 +37,7 @@ func SetupCommands() {
 		Tags:        []string{"figurinhas"},
 		Exec:        func(msg *events.Message) { Fig(msg, nil) },
 		Description: "Converte imagem ou video em figurinha.",
-		Usage:       fmt.Sprintf("Envie uma imagem ou video com a legenda %sfig", config.Prefix),
+		Usage:       fmt.Sprintf("Envie uma imagem ou video com a legenda `%sfig`", config.Prefix),
 	})
 
 	Registry.RegisterCommand(Command{
@@ -45,7 +46,16 @@ func SetupCommands() {
 		Tags:        []string{"figurinhas", "figurinhas", "figurinha", "sticker", "stickers"},
 		Exec:        func(msg *events.Message) { Fig(msg, []string{"cfig"}) },
 		Description: "Converte imagem ou video em figurinha no formato quadradinho (corte automático).",
-		Usage:       fmt.Sprintf("Envie uma imagem ou video com a legenda %sfig", config.Prefix),
+		Usage:       fmt.Sprintf("Envie uma imagem ou video com a legenda `%scfig`", config.Prefix),
+	})
+
+	Registry.RegisterCommand(Command{
+		MenuTrigger: proto.String("help"),
+		Triggers:    []string{"help", "ajuda"},
+		Tags:        []string{"help", "ajuda"},
+		Exec:        Help,
+		Description: "Exibe informações sobre um comando específico.",
+		Usage:       fmt.Sprintf("Envie `%shelp <comando>` para ver informações sobre um comando específico", config.Prefix),
 	})
 
 	fmt.Printf("Registered %d commands\n", len(Registry.cmdList))

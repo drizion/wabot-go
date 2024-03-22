@@ -1,6 +1,11 @@
 package helpers
 
-import "go.mau.fi/whatsmeow/types/events"
+import (
+	"regexp"
+	"strings"
+
+	"go.mau.fi/whatsmeow/types/events"
+)
 
 func GetTextFromMsg(m *events.Message) string {
 	switch {
@@ -15,4 +20,11 @@ func GetTextFromMsg(m *events.Message) string {
 	default:
 		return ""
 	}
+}
+
+func GetCmdArgs(m *events.Message) []string {
+	argsString := strings.Join(strings.Fields(GetTextFromMsg(m)[1:]), " ")
+	re := regexp.MustCompile(`\s+`)
+	args := re.Split(argsString, -1)[1:]
+	return args
 }

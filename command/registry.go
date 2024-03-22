@@ -95,12 +95,12 @@ func (r *CommandRegistry) ListCommands() []Command {
 	return cmds
 }
 
-func (r *CommandRegistry) GetMenu() string {
+func (r *CommandRegistry) GetMenu(msg *events.Message) string {
 	r.mu.RLock()
 	defer r.mu.RUnlock()
 
-	menu := helpers.GetGreeting("Fulano") + "\n\n"
-	menu += "> *LISTA DE COMANDOS*\n\n"
+	menu := "> " + helpers.GetGreeting(msg.Info.PushName) + "\n\n"
+	// menu += "> *LISTA DE COMANDOS*\n\n"
 
 	for _, command := range r.cmdList {
 		if !command.HideOnMenu {

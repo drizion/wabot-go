@@ -25,7 +25,7 @@ func SetupCommands() {
 		MenuTrigger:       proto.String("menu"),
 		Triggers:          []string{"menu", "help", "ajuda", "comandos", "commands"},
 		Tags:              []string{"menu", "help", "ajuda", "comandos", "commands"},
-		Exec:              Help,
+		Exec:              Menu,
 		Description:       `Exibe a lista de comandos disponíveis.`,
 		AllowUnregistered: true,
 	})
@@ -44,7 +44,7 @@ func SetupCommands() {
 		Triggers:    []string{"cfig"},
 		Tags:        []string{"figurinhas", "figurinhas", "figurinha", "sticker", "stickers"},
 		Exec:        func(msg *events.Message) { Fig(msg, []string{"cfig"}) },
-		Description: "Converte imagem ou video em figurinha.",
+		Description: "Converte imagem ou video em figurinha no formato quadradinho (corte automático).",
 		Usage:       fmt.Sprintf("Envie uma imagem ou video com a legenda %sfig", config.Prefix),
 	})
 

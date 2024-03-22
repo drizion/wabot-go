@@ -110,13 +110,6 @@ func Fig(msg *events.Message, args []string) {
 		return
 	}
 
-	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		helpers.SendReact(msg, helpers.ErrorReaction)
-		helpers.Reply(msg, "Ocorreu um erro ao ler o arquivo convertido... por favor, tente novamente.")
-		return
-	}
-
 	stickerBytes, err = helpers.WebpWriteExifData(stickerBytes, now.Unix())
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
@@ -157,5 +150,4 @@ func Fig(msg *events.Message, args []string) {
 		helpers.SendReact(msg, helpers.ErrorReaction)
 		helpers.Reply(msg, "Ocorreu um erro ao enviar a figurinha... por favor, tente novamente.")
 	}
-
 }

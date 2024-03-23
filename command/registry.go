@@ -20,6 +20,7 @@ type Command struct {
 	OnlyOwner         bool
 	HideOnMenu        bool
 	AllowUnregistered bool
+	Disabled          bool
 	Exec              func(msg *events.Message)
 }
 

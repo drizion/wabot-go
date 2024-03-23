@@ -10,14 +10,15 @@ import (
 )
 
 const (
-	ErrorReaction   string = "❌"
-	SuccessReaction string = "✅"
-	LoadingReaction string = "⏳"
-	ConfigReaction  string = "⚙️"
-	PingReaction    string = "🏓"
-	LoveReaction    string = "❤️"
-	LikeReaction    string = "👍"
-	DislikeReaction string = "👎"
+	ErrorReaction     string = "❌"
+	ForbiddenReaction string = "🚫"
+	SuccessReaction   string = "✅"
+	LoadingReaction   string = "⏳"
+	ConfigReaction    string = "⚙️"
+	PingReaction      string = "🏓"
+	LoveReaction      string = "❤️"
+	LikeReaction      string = "👍"
+	DislikeReaction   string = "👎"
 )
 
 func SendReact(m *events.Message, reaction string) whatsmeow.SendResponse {

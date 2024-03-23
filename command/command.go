@@ -58,5 +58,16 @@ func SetupCommands() {
 		Usage:       fmt.Sprintf("Envie `%shelp <comando>` para ver informações sobre um comando específico", config.Prefix),
 	})
 
+	Registry.RegisterCommand(Command{
+		MenuTrigger: proto.String("ban"),
+		Triggers:    []string{"ban"},
+		Tags:        []string{"ban"},
+		Description: "Banir um usuário.",
+		Usage:       fmt.Sprintf("Envie `%sban <usuário>` para banir um usuário", config.Prefix),
+		Exec:        Ban,
+		OnlyGroup:   true,
+		OnlyAdmin:   true,
+	})
+
 	fmt.Printf("Registered %d commands\n", len(Registry.cmdList))
 }

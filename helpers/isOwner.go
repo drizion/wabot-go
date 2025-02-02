@@ -6,7 +6,7 @@ import (
 )
 
 func IsOwner(sender types.JID) bool {
-	for _, num := range config.OwnerNumbers {
+	for _, num := range config.Bot.OwnerNumbers {
 		if sender.User == num {
 			return true
 		}

@@ -4,12 +4,13 @@ import (
 	"fmt"
 
 	"github.com/drizion/wabot-go/client"
+	"github.com/drizion/wabot-go/database/model"
 	"github.com/drizion/wabot-go/helpers"
 	"go.mau.fi/whatsmeow/types"
 	"go.mau.fi/whatsmeow/types/events"
 )
 
-func Ban(msg *events.Message) {
+func Ban(msg *events.Message, user *model.BotUser) {
 	arg := helpers.GetCmdArgs(msg)[0]
 
 	res, err := client.Wabot.IsOnWhatsApp([]string{arg})

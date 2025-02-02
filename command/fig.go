@@ -8,6 +8,7 @@ import (
 	"time"
 
 	c "github.com/drizion/wabot-go/client"
+	"github.com/drizion/wabot-go/database/model"
 	"github.com/drizion/wabot-go/helpers"
 	"go.mau.fi/whatsmeow"
 	waProto "go.mau.fi/whatsmeow/binary/proto"
@@ -15,7 +16,7 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-func Fig(msg *events.Message, args []string) {
+func Fig(msg *events.Message, user *model.BotUser, args []string) {
 	go helpers.SendReact(msg, helpers.LoadingReaction)
 
 	var isVideoFig bool = false

@@ -1,0 +1,18 @@
+{
+  "New command": {
+    "prefix": "cmd",
+    "body": [
+      "package command",
+      "",
+      "import (",
+      "  \"github.com/drizion/wabot-go/database/model\"",
+      "  \"go.mau.fi/whatsmeow/types/events\"",
+      ")",
+      "",
+      "func $1(msg *events.Message, user *model.BotUser) {",
+      "$0",
+      "}",
+    ],
+    "description": "Create new command for bot"
+  }
+}

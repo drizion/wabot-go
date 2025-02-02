@@ -26,5 +26,10 @@ func GetCmdArgs(m *events.Message) []string {
 	argsString := strings.Join(strings.Fields(GetTextFromMsg(m)[1:]), " ")
 	re := regexp.MustCompile(`\s+`)
 	args := re.Split(argsString, -1)[1:]
+
+	if len(args) == 0 {
+		args = append(args, "")
+	}
+
 	return args
 }

@@ -1,9 +1,11 @@
 package command
 
 import (
+	"fmt"
 	"sync"
 
 	"github.com/drizion/wabot-go/config"
+	"github.com/drizion/wabot-go/database/model"
 	"github.com/drizion/wabot-go/helpers"
 	"go.mau.fi/whatsmeow/types/events"
 )
@@ -21,7 +23,7 @@ type Command struct {
 	HideOnMenu        bool
 	AllowUnregistered bool
 	Disabled          bool
-	Exec              func(msg *events.Message)
+	Exec              func(msg *events.Message, user *model.BotUser)
 }
 
 type CommandRegistry struct {
@@ -34,6 +36,10 @@ func NewCommandRegistry() *CommandRegistry {
 	return &CommandRegistry{
 		commands: make(map[string]Command),
 	}
+}
+
+func (r *CommandRegistry) Log(msg string) {
+	fmt.Println(msg)
 }
 
 func (r *CommandRegistry) RegisterCommand(command Command) error {
@@ -105,7 +111,7 @@ func (r *CommandRegistry) GetMenu(msg *events.Message) string {
 
 	for _, command := range r.cmdList {
 		if !command.HideOnMenu {
-			menu += "`" + config.Prefix + *command.MenuTrigger + "`\n"
+			menu += "`" + config.Bot.Prefix + *command.MenuTrigger + "`\n"
 			menu += " ↳ _" + command.Description + "_\n\n"
 		}
 	}

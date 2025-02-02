@@ -32,3 +32,5 @@ database.db
 *.ico
 *.mp4
 *.mp3
+gentool.yaml
+*.DS_Store
